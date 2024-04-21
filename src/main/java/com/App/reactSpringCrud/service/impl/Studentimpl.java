@@ -71,7 +71,16 @@ public class Studentimpl implements StudentService {
 
     @Override
     public void deleteStudent(long id) {
+
+
+        if(!studentRepository.isExistStudent(id)){
+            throw new StudentNotFoundException("sorry,cannot find this student!");
+        }
+
         studentRepository.deleteById(id);
+
+
+
 
     }
 }
