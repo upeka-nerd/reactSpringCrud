@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ReactSpringCrudApplication {
 
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(ReactSpringCrudApplication.class, args);
 	}
