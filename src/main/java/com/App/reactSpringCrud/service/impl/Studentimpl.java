@@ -34,7 +34,6 @@ public class Studentimpl implements StudentService {
 
      return studentRepository.findByEmail(email).isPresent();
 
-
     }
 
     @Override
@@ -44,9 +43,7 @@ public class Studentimpl implements StudentService {
 
     @Override
     public Student updateStudent(Student s, long id) {
-
         Optional<Student> selectedStudent = studentRepository.findById(id);
-
         return selectedStudent.map(st->{
                 st.setId(s.getId());
                 st.setFirstName(s.getFirstName());
@@ -57,16 +54,24 @@ public class Studentimpl implements StudentService {
 
                     }).orElseThrow(()->new StudentNotFoundException("Cannot find this stundet"));
 
-
     }
 
     @Override
     public Student getStudent(long id) {
-        return null;
+
+
+        Optional<Student> selectedStudent = studentRepository.findById(id);
+        if(selectedStudent.isPresent()){
+
+            return selectedStudent.get();
+        }
+
+        throw new StudentNotFoundException("cannot find this student");
     }
 
     @Override
     public void deleteStudent(long id) {
+        studentRepository.deleteById(id);
 
     }
 }
