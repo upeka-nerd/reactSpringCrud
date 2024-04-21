@@ -19,9 +19,7 @@ public class StudentController {
 
     @PostMapping()
     public ResponseEntity<Student>saveStudent(@RequestBody Student s){
-
       return new ResponseEntity<Student>(studentService.addStudent(s), HttpStatus.CREATED);
-
     }
 
     @GetMapping("/all")
@@ -30,11 +28,10 @@ public class StudentController {
         return new ResponseEntity<List<Student>>(studentService.getAllStudent(),HttpStatus.FOUND);
 
     }
-    @GetMapping("{id}")
+    @GetMapping("/get")
     public ResponseEntity<Student>getStudent(@RequestParam long id){
 
          return new ResponseEntity<Student>(studentService.getStudent(id),HttpStatus.FOUND);
-
     }
 
     @PutMapping
@@ -44,7 +41,7 @@ public class StudentController {
 
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete")
     public void deleteStudent(@RequestParam long id){
 
         studentService.deleteStudent(id);

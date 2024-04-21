@@ -13,7 +13,8 @@ import java.util.Optional;
 @EnableJpaRepositories
 public interface StudentRepository extends JpaRepository<Student,Long> {
 
+    @Query("SELECT email FROM Student  WHERE email = :email")
     Optional<Student> findByEmail(String email);
 
-    boolean isExistStudent(long id);
+
 }

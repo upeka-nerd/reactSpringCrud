@@ -6,16 +6,13 @@ import com.App.reactSpringCrud.model.Student;
 import com.App.reactSpringCrud.repository.StudentRepository;
 import com.App.reactSpringCrud.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 @RequiredArgsConstructor
-public class Studentimpl implements StudentService {
+public class StudentServiceimpl implements StudentService {
 
     public final StudentRepository studentRepository;
 
@@ -73,7 +70,7 @@ public class Studentimpl implements StudentService {
     public void deleteStudent(long id) {
 
 
-        if(!studentRepository.isExistStudent(id)){
+        if(!studentRepository.findById(id).isPresent()){
             throw new StudentNotFoundException("sorry,cannot find this student!");
         }
 
