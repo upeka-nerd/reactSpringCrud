@@ -22,7 +22,6 @@ public class StudentController {
 
       return new ResponseEntity<Student>(studentService.addStudent(s), HttpStatus.CREATED);
 
-
     }
 
     @GetMapping("/all")
@@ -34,8 +33,15 @@ public class StudentController {
     @GetMapping("{id}")
     public ResponseEntity<Student>getStudent(@RequestParam long id){
 
-        new ResponseEntity<Student>(studentService.getStudent(id),HttpStatus.FOUND);
+         return new ResponseEntity<Student>(studentService.getStudent(id),HttpStatus.FOUND);
 
+    }
+
+    @PutMapping
+    public ResponseEntity<Student>updateStudent(@RequestBody Student s,@PathVariable long id){
+
+
+        return new ResponseEntity<Student>(studentService.updateStudent(s,id),HttpStatus.CREATED);
 
 
     }
