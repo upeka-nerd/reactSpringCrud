@@ -40,30 +40,16 @@ public class StudentController {
     @PutMapping
     public ResponseEntity<Student>updateStudent(@RequestBody Student s,@PathVariable long id){
 
-
         return new ResponseEntity<Student>(studentService.updateStudent(s,id),HttpStatus.CREATED);
-
 
     }
 
+    @DeleteMapping("{id}")
+    public void deleteStudent(@RequestParam long id){
 
+        studentService.deleteStudent(id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 
